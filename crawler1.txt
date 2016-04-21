@@ -1,0 +1,9 @@
+#-*-coding:utf8-*-
+import requests
+import re
+name = input('Please enter your name:')
+url = ('https://github.com/%s?tab=repositories' % name)
+html = requests.get(url)
+repositories = re.findall('css-truncate-target" itemprop="homeLocation" title="(.*?)"><svg',html.text)
+for each in repositories:
+    print('homeLocation:%s'%each)
